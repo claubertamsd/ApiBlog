@@ -6,6 +6,7 @@ import com.br.portfolio.main.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 @Service
 public class IServiceImpl implements IService {
@@ -26,4 +27,11 @@ public class IServiceImpl implements IService {
     public Post save(Post post) {
         return feedInterface.save(post);
     }
+
+    @Override
+    public void delete(long id) {
+      feedInterface.deleteAllById(Collections.singleton(id));
+    }
+
+
 }
