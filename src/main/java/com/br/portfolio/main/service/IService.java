@@ -8,6 +8,6 @@ public interface IService {
     List<Post> findall();
     Post findByid(long id);
     Post save(Post post);
-
+    void delete(long id);
 
 }

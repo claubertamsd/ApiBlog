@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -21,11 +21,19 @@
       <div class="card .d-flex justify-content-center"  style="width: 60%; " >
           <h5 class="card-header"><span th:text="${post.autor}"> </span></h5>
           <div class="card-body">
-              <h5 class="card-title"><span th:text="${post.titulo}"></span></h5>
+              <p class="card-text"><span th:text="${post.data}"></span></p>
+
+              <a th:action="@{/getPostDetails/{id}(id=${post.id})}">
+                  <h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;">
+                      <span th:text="${post.titulo}"></span></h4></a>
+
               <p class="card-text">
                   <span th:utext="${#strings.abbreviate(post.texto,400)}">
                   </span></p>
-              <a href="" class="btn btn-dark">Go somewhere</a>
+              <form th:action="@{/delete/{id}(id=${post.id})}" th:object="${post}" method="post">
+                  <button type="submit" class="btn btn-dark" style="margin-top: 10px;">Deletar</button>
+              </form>
+
           </div>
       </div>
   </section>
